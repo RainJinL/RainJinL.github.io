@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rain Liu</title>
 <meta name="description" content="Rain Liu — astrophysics & data science at UC Santa Barbara. Light curves, night skies, and things I build.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
   :root{
@@ -101,6 +104,19 @@
   .motto{margin-left:auto;color:var(--comet);display:flex;align-items:center;gap:.65rem}
   @media (max-width:40em){ .motto{margin-left:0} }
   #raccoon{image-rendering:pixelated;width:39px;height:36px;flex:0 0 auto}
+
+  /* 打印：白底深字，供教授打印阅读 */
+  @media print{
+    :root{--bg:#FFFFFF;--bg2:#FFFFFF;--panel:#FFFFFF;--line:#BBBBBB;
+      --ink:#14181D;--dim:#3A424B;--faint:#5A636D;
+      --fire:#A85A1E;--fire-deep:#A85A1E;--comet:#1F7A64}
+    #sky{display:none}
+    body{background:#fff;font-size:12pt}
+    nav{position:static;background:#fff;backdrop-filter:none;border-bottom:1px solid #999}
+    #hero{min-height:0;padding-top:1.5rem}
+    section{padding-top:2.2rem}
+    .card:hover{transform:none}
+  }
 </style>
 </head>
 <body>
@@ -240,13 +256,13 @@
     var rx=rc.getContext("2d");
     var PAL={g:"#9AA3AE", d:"#39424D", k:"#12161B", c:"#EDE7DA"};
     var SPRITE=[
-      "..gg.....gg..",
-      ".gggg...gggg.",
-      ".gcgg...ggcg.",
+      "..dd.....dd..",
+      ".dddd...dddd.",
       ".ggggggggggg.",
       "ggggggggggggg",
-      "gddgggggggddg",
-      "gdEdgggggdEdg",
+      "gcccgggggcccg",
+      "gdddddddddddg",
+      "gdEdddddddEdg",
       "gddcccccccddg",
       "gccccckcccccg",
       ".ccccccccccc.",
