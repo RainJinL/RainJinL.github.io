@@ -101,7 +101,9 @@
     font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;color:var(--faint)}
   footer a{color:var(--dim);text-decoration:none}
   footer a:hover{color:var(--fire)}
-  .motto{margin-left:auto;color:var(--comet);display:flex;align-items:center;gap:.65rem}
+  .motto{margin-left:auto;color:var(--comet);display:flex;align-items:center;gap:.65rem;font-size:.68rem}
+  .motto .mline{letter-spacing:.05em}
+  @media (min-width:52em){ .motto .mline{white-space:nowrap} }
   @media (max-width:40em){ .motto{margin-left:0} }
   #raccoon{image-rendering:pixelated;width:88px;height:68px;flex:0 0 auto}
 
@@ -241,7 +243,7 @@
   <div class="in">
     <a href="mailto:rainliu@ucsb.edu">EMAIL</a>
     <a href="https://github.com/RainJinL">GITHUB</a>
-    <span class="motto"><canvas id="raccoon" width="44" height="34" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
+    <span class="motto"><canvas id="raccoon" width="44" height="34" title="小浣熊 · OC_Nova_1"></canvas><span class="mline">data doesn't lie; the stars don't disappear; all we need is patience</span></span>
   </div>
 </footer>
 
