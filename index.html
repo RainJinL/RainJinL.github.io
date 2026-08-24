@@ -103,7 +103,7 @@
   footer a:hover{color:var(--fire)}
   .motto{margin-left:auto;color:var(--comet);display:flex;align-items:center;gap:.65rem}
   @media (max-width:40em){ .motto{margin-left:0} }
-  #raccoon{image-rendering:pixelated;width:39px;height:36px;flex:0 0 auto}
+  #raccoon{image-rendering:pixelated;width:54px;height:39px;flex:0 0 auto}
 
   /* 打印：白底深字，供教授打印阅读 */
   @media print{
@@ -241,7 +241,7 @@
   <div class="in">
     <a href="mailto:rainliu@ucsb.edu">EMAIL</a>
     <a href="https://github.com/RainJinL">GITHUB</a>
-    <span class="motto"><canvas id="raccoon" width="13" height="12" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
+    <span class="motto"><canvas id="raccoon" width="18" height="13" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
   </div>
 </footer>
 
@@ -254,23 +254,24 @@
   var rc=document.getElementById("raccoon");
   if(rc){
     var rx=rc.getContext("2d");
-    var PAL={g:"#9AA3AE", d:"#39424D", k:"#12161B", c:"#EDE7DA"};
+    var PAL={g:"#9AA3AE", d:"#39424D", k:"#12161B", c:"#EDE7DA", b:"#8A6A4F"};
     var SPRITE=[
-      "..dd.....dd..",
-      ".dddd...dddd.",
-      ".ggggggggggg.",
-      "ggggggggggggg",
-      "gcccgggggcccg",
-      "gdddddddddddg",
-      "gdEdddddddEdg",
-      "gddcccccccddg",
-      "gccccckcccccg",
-      ".ccccccccccc.",
-      "..ccccccccc..",
-      "...ccccccc..."
+      "..gg....gg........",
+      ".gddg..gddg.......",
+      ".ggggggggggg......",
+      "ggggggggggggg.....",
+      "ggddgggggddgg.....",
+      "gdEdgggggdEdg.....",
+      "gcdcccccccdcg.....",
+      ".gcccckkccccg.....",
+      ".gcccccccccg......",
+      ".gggcccccggg.dcdcd",
+      "ggggcccccggggdcdcd",
+      "gggggcccgggggdcdcd",
+      "..bb.cccc.bb......"
     ];
     function drawRaccoon(blink){
-      rx.clearRect(0,0,13,12);
+      rx.clearRect(0,0,18,13);
       for(var y=0;y<SPRITE.length;y++){
         for(var x=0;x<SPRITE[y].length;x++){
           var ch=SPRITE[y][x];
