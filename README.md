@@ -39,6 +39,6 @@ Keep files under ~500 KB each (export ~1600px wide JPEG, quality 80).
 
 - [ ] Add real photos (6 slots marked PHOTO COMING)
 - [ ] RainStop playable: copy `dist/rainstop_playable_en.html` into `play/rainstop.html`, link the card
-- [ ] Campfire & Comet EN version — only after Rocky Worlds challenge closes (2026-08-28) and after scrubbing exploit/trading details
-- [ ] Rocky Worlds write-up — same timing rule
+- [ ] Campfire & Comet EN version — after the data challenge wraps up (late Aug 2026)
+- [ ] Rocky Worlds write-up — after the challenge closes
 - [ ] Custom domain later: buy one, add `CNAME` file, done (GitHub Student Pack gives a free year)
