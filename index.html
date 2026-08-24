@@ -154,22 +154,10 @@
          不想展示的直接删掉整块；本区末尾有两张被注释掉的备用卡片，取消注释即可上架。 -->
     <div class="cards">
       <div class="card">
-        <span class="t">Rocky Worlds — JWST eclipse photometry</span>
-        <span class="d">Secondary-eclipse depths of rocky exoplanets from MIRI 15&nbsp;µm time series,
-        with preregistered predictions and a fully auditable git history.</span>
-        <span class="m"><span class="soon">WRITE-UP AFTER THE CHALLENGE CLOSES</span></span>
-      </div>
-      <div class="card">
         <span class="t">Eternal Night (永夜发育)</span>
         <span class="d">A roguelite tower-defense web game: sixteen talents that change how a run
         is played, push-your-luck scavenging, and a reincarnation narrative.</span>
         <span class="m">GAME DESIGN · WEB</span>
-      </div>
-      <div class="card">
-        <span class="t">A household of agents</span>
-        <span class="d">A multi-agent research pipeline (paper trading only) with an append-only
-        shared worklog and a rule enforced in code: no backdated data, ever.</span>
-        <span class="m">PYTHON · LLM ORCHESTRATION</span>
       </div>
       <div class="card">
         <span class="t">Pandemic transmission simulator</span>
@@ -236,22 +224,35 @@
     cv.width=innerWidth*devicePixelRatio; cv.height=innerHeight*devicePixelRatio;
     cv.style.width=innerWidth+"px"; cv.style.height=innerHeight+"px";
   }
+  var COLORS=["#E6ECF4","#E6ECF4","#E6ECF4","#E6ECF4","#E6ECF4","#E6ECF4","#E6ECF4",
+              "#CFE0F2","#CFE0F2","#F2E2C4"]; /* 蓝白/白/暖黄，比例近似真实星色 */
   function seedStars(){
     stars=[];
-    for(var i=0;i<160;i++){
-      stars.push({x:Math.random(), y:Math.random()*0.8, r:Math.random()*1.3+0.5,
-                  a:Math.random()*0.5+0.35, s:Math.random()*0.9+0.25, ph:Math.random()*6.28});
+    for(var i=0;i<210;i++){
+      var b=Math.pow(Math.random(),2);            /* 幂律：暗星多，亮星少 */
+      stars.push({
+        x:Math.random(),
+        y:Math.pow(Math.random(),1.25)*0.92,      /* 越靠地平线越稀 */
+        r:0.5+b*1.9,
+        a:0.32+b*0.6,
+        bright:b>0.86,                             /* 少数亮星带光晕 */
+        c:COLORS[(Math.random()*COLORS.length)|0],
+        s:Math.random()*0.8+0.2, ph:Math.random()*6.28
+      });
     }
   }
   function drawStars(t){
     cx.clearRect(0,0,cv.width,cv.height);
+    var dpr=devicePixelRatio||1;
     stars.forEach(function(st){
-      var tw = reduced? 1 : (0.78+0.22*Math.sin(t/1000*st.s+st.ph));
+      var tw = reduced? 1 : (0.8+0.2*Math.sin(t/1000*st.s+st.ph));
       cx.globalAlpha = st.a*tw;
-      cx.fillStyle = "#E6ECF4";
+      cx.fillStyle = st.c;
+      if(st.bright){ cx.shadowBlur = 7*dpr; cx.shadowColor = st.c; }
       cx.beginPath();
-      cx.arc(st.x*cv.width, st.y*cv.height, st.r*devicePixelRatio, 0, 6.28);
+      cx.arc(st.x*cv.width, st.y*cv.height, st.r*dpr, 0, 6.28);
       cx.fill();
+      if(st.bright){ cx.shadowBlur = 0; }
     });
     cx.globalAlpha=1;
     if(!reduced) requestAnimationFrame(drawStars);
