@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rain Liu</title>
+<meta name="description" content="Rain Liu — astrophysics & data science at UC Santa Barbara. Light curves, night skies, and things I build.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  :root{
+    --bg:#10151B; --bg2:#0C1015; --panel:#161D25; --line:#242D37;
+    --ink:#E9E2D4; --dim:#8C96A3; --faint:#5C6673;
+    --fire:#E58A45; --fire-deep:#B26A38; --comet:#82D4BE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif;
+    font-size:17px; line-height:1.85; min-height:100vh;
+  }
+  #sky{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 115%, rgba(229,138,69,.22), transparent 55%),
+               linear-gradient(#141B24 0%, #10151B 60%)}
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+  nav{position:sticky;top:0;z-index:3;background:rgba(16,21,27,.88);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line)}
+  nav .in{max-width:60em;margin:0 auto;padding:.8rem 1.4rem;display:flex;gap:1.6rem;align-items:baseline;flex-wrap:wrap}
+  nav .name{font-weight:900;letter-spacing:.12em;margin-right:auto}
+  nav a{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+    color:var(--dim);text-decoration:none}
+  nav a:hover{color:var(--fire)}
+  nav a:focus-visible{outline:2px solid var(--fire);outline-offset:3px}
+
+  main{position:relative;z-index:1;max-width:60em;margin:0 auto;padding:0 1.4rem 5rem}
+  section{padding-top:4.2rem}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.3em;
+    color:var(--faint);display:block;margin-bottom:.7rem;text-transform:uppercase}
+  h1,h2{font-weight:900;letter-spacing:.04em;text-wrap:balance}
+  h2{font-size:1.5rem;margin-bottom:1.5rem}
+
+  /* hero */
+  #hero{min-height:72vh;display:flex;flex-direction:column;justify-content:center;padding-top:3rem}
+  #hero h1{font-size:clamp(2rem, 5.5vw, 3.4rem);line-height:1.25;max-width:14em}
+  #hero h1 em{font-style:normal;color:var(--fire)}
+  #hero .tag{margin-top:1.6rem;max-width:38em;color:var(--dim)}
+  #hero .sig{margin-top:2.4rem;font-family:"IBM Plex Mono",monospace;font-size:.8rem;
+    color:var(--comet);letter-spacing:.06em}
+
+  .prose{max-width:38em}
+  .prose p{margin-bottom:1.1rem}
+  a.inline{color:var(--fire);text-decoration:none;border-bottom:1px solid var(--fire-deep)}
+  a.inline:hover{border-bottom-color:var(--fire)}
+
+  /* gallery */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15em,1fr));gap:1rem}
+  figure.shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+  figure.shot .ph{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(160deg,#131A22,#0D1218);color:var(--faint);
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em}
+  figure.shot img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+  figure.shot figcaption{padding:.7rem .9rem;font-size:.82rem;color:var(--dim);line-height:1.6}
+  figure.shot figcaption b{color:var(--ink);font-weight:600}
+
+  /* projects */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(17em,1fr));gap:1rem}
+  .card{border:1px solid var(--line);border-radius:8px;background:var(--panel);
+    padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;
+    transition:border-color .15s, transform .15s}
+  .card:hover{border-color:var(--fire-deep);transform:translateY(-2px)}
+  .card .t{font-weight:600}
+  .card .d{font-size:.85rem;color:var(--dim);flex:1}
+  .card .m{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.1em;color:var(--faint)}
+  .card .m .soon{color:var(--comet)}
+
+  /* research */
+  .entry{border-left:2px solid var(--line);padding:.2rem 0 .2rem 1.2rem;margin-bottom:1.6rem;max-width:42em}
+  .entry .when{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;color:var(--fire)}
+  .entry .t{font-weight:600;margin:.25rem 0}
+  .entry p{font-size:.9rem;color:var(--dim)}
+
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:4rem}
+  footer .in{max-width:60em;margin:0 auto;padding:1.6rem 1.4rem;display:flex;gap:1.6rem;flex-wrap:wrap;
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;color:var(--faint)}
+  footer a{color:var(--dim);text-decoration:none}
+  footer a:hover{color:var(--fire)}
+  .motto{margin-left:auto;color:var(--comet)}
+  @media (max-width:40em){ .motto{margin-left:0} }
+</style>
+</head>
+<body>
+<div id="sky"></div><canvas id="stars"></canvas>
+
+<nav aria-label="Site">
+  <div class="in">
+    <span class="name">RAIN LIU</span>
+    <a href="#about">ABOUT</a>
+    <a href="#photography">PHOTOGRAPHY</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#research">RESEARCH</a>
+  </div>
+</nav>
+
+<main>
+  <section id="hero">
+    <span class="eyebrow">Santa Barbara, California</span>
+    <h1>I pull signals out of noisy skies —<br>and cook for <em>every kind of mind</em> at my table.</h1>
+    <p class="tag">Physics (astrophysics) &amp; Statistics and Data Science at UC Santa Barbara.
+    I analyze exoplanet light curves, benchmark gamma-ray-burst models, photograph comets,
+    and build small games and smaller agents.</p>
+    <p class="sig">first test the signal, then ask what it means</p>
+  </section>
+
+  <section id="about">
+    <span class="eyebrow">About</span>
+    <h2>The short version</h2>
+    <div class="prose">
+      <p>I grew up in Beijing organizing people to look up — a comet named after a Chinese
+      observatory, two total lunar eclipses on two continents. Now I study how to tell real
+      astrophysical signals from the noise that impersonates them: transit searches in TESS
+      photometry, eclipse depths in JWST time series, and the systematic errors that limit both.</p>
+      <p>Off the terminal I sear steaks with attention to Maillard kinetics, design
+      roguelite games, and keep a small household of AI agents with strict table manners —
+      the house rule is that no mind may eat data from the future.</p>
+    </div>
+  </section>
+
+  <section id="photography">
+    <span class="eyebrow">Photography</span>
+    <h2>Night skies, mostly</h2>
+    <div class="grid">
+      <!-- Replace each .ph placeholder with <img src="photos/xxx.jpg" alt="..."> -->
+      <figure class="shot"><div class="ph">PHOTO COMING</div>
+        <figcaption><b>Comet Tsuchinshan–ATLAS</b><br>Beijing · Oct 2024</figcaption></figure>
+      <figure class="shot"><div class="ph">PHOTO COMING</div>
+        <figcaption><b>Total lunar eclipse</b><br>Beijing · Sep 2025</figcaption></figure>
+      <figure class="shot"><div class="ph">PHOTO COMING</div>
+        <figcaption><b>Total lunar eclipse</b><br>Santa Barbara · Mar 2026</figcaption></figure>
+      <figure class="shot"><div class="ph">PHOTO COMING</div>
+        <figcaption><b>Comet C/2025 R3 (PanSTARRS)</b><br>Lake Cachuma · Apr 2026</figcaption></figure>
+      <figure class="shot"><div class="ph">PHOTO COMING</div>
+        <figcaption><b>Perseid meteor shower</b><br>desert dark site</figcaption></figure>
+      <figure class="shot"><div class="ph">PHOTO COMING</div>
+        <figcaption><b>Deep-sky objects</b><br>stacked &amp; processed</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="projects">
+    <span class="eyebrow">Projects</span>
+    <h2>Things I build</h2>
+    <!-- ✂ 活动自选区：每张卡片都是一个独立的 <div class="card">…</div> 块，
+         不想展示的直接删掉整块；本区末尾有两张被注释掉的备用卡片，取消注释即可上架。 -->
+    <div class="cards">
+      <div class="card">
+        <span class="t">Rocky Worlds — JWST eclipse photometry</span>
+        <span class="d">Secondary-eclipse depths of rocky exoplanets from MIRI 15&nbsp;µm time series,
+        with preregistered predictions and a fully auditable git history.</span>
+        <span class="m"><span class="soon">WRITE-UP AFTER THE CHALLENGE CLOSES</span></span>
+      </div>
+      <div class="card">
+        <span class="t">Eternal Night (永夜发育)</span>
+        <span class="d">A roguelite tower-defense web game: sixteen talents that change how a run
+        is played, push-your-luck scavenging, and a reincarnation narrative.</span>
+        <span class="m">GAME DESIGN · WEB</span>
+      </div>
+      <div class="card">
+        <span class="t">RainStop — a 3-minute playable</span>
+        <span class="d">A bilingual interactive story with five endings, shipped as a single
+        self-contained HTML file under 1&nbsp;MB, with automated QA gates.</span>
+        <span class="m">INTERACTIVE FICTION · <span class="soon">LINK COMING</span></span>
+      </div>
+      <div class="card">
+        <span class="t">A household of agents</span>
+        <span class="d">A multi-agent research pipeline (paper trading only) with an append-only
+        shared worklog and a rule enforced in code: no backdated data, ever.</span>
+        <span class="m">PYTHON · LLM ORCHESTRATION</span>
+      </div>
+      <div class="card">
+        <span class="t">Campfire &amp; Comet</span>
+        <span class="d">A text adventure through one real night at Lake Cachuma — steaks,
+        marshmallow caramelization, and a comet at dawn. English version in progress.</span>
+        <span class="m"><span class="soon">COMING SOON</span></span>
+      </div>
+      <div class="card">
+        <span class="t">Pandemic transmission simulator</span>
+        <span class="d">Fisher-KPP reaction-diffusion model of spatial disease spread.
+        Best Data Visualization, UCSB Data4Good Datathon 2026.</span>
+        <span class="m">PDE · MATPLOTLIB</span>
+      </div>
+      <!-- 备用卡片 1：观鸟与防撞（把这段注释符号去掉即可上架）
+      <div class="card">
+        <span class="t">Window-strike prevention</span>
+        <span class="d">Founded a high-school bird club in Beijing (13 field sessions, eBird
+        records); after finding a Blue-and-white Flycatcher killed by campus glass, worked
+        with an NGO to install prevention stickers — zero collisions documented afterwards.
+        Now monitoring Snowy Plovers at Coal Oil Point Reserve.</span>
+        <span class="m">CONSERVATION · EBIRD</span>
+      </div>
+      -->
+      <!-- 备用卡片 2：Guru 实习（把这段注释符号去掉即可上架）
+      <div class="card">
+        <span class="t">Playable-ad production system</span>
+        <span class="d">Internship: a TypeScript/Vite pipeline shipping 25 bilingual mobile
+        playable ads from one shared runtime engine, with automated validation and
+        end-to-end test gates.</span>
+        <span class="m">INTERNSHIP · TYPESCRIPT</span>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <section id="research">
+    <span class="eyebrow">Research</span>
+    <h2>What I've worked on</h2>
+    <div class="entry">
+      <span class="when">2026 — PRESENT</span>
+      <div class="t">Gamma-ray-burst afterglow model benchmarking · NAOC</div>
+      <p>Benchmarking five open-source afterglow codes through a unified Bayesian-inference
+      pipeline; quantifying how forward-model choice biases inferred jet parameters for
+      Einstein Probe transients. Advisor: Prof. Dong Xu.</p>
+    </div>
+    <div class="entry">
+      <span class="when">2024</span>
+      <div class="t">TESS hot-Jupiter light curves · Frontiers of Exoplanetary Science</div>
+      <p>BLS period searches, transit fitting, and companion screening across ~100 systems.
+      Advisor: Prof. Joshua Winn (Princeton).</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <a href="mailto:rainliu@ucsb.edu">EMAIL</a>
+    <a href="https://github.com/RainJinL">GITHUB</a>
+    <span class="motto">data doesn't lie; the stars don't disappear; all we need is patience</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  /* 星空 —— 与《篝火与彗星》同款 */
+  var cv=document.getElementById("stars"), cx=cv.getContext("2d"), stars=[];
+  var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function sizeCanvas(){
+    cv.width=innerWidth*devicePixelRatio; cv.height=innerHeight*devicePixelRatio;
+    cv.style.width=innerWidth+"px"; cv.style.height=innerHeight+"px";
+  }
+  function seedStars(){
+    stars=[];
+    for(var i=0;i<130;i++){
+      stars.push({x:Math.random(), y:Math.random()*0.75, r:Math.random()*1.1+0.3,
+                  a:Math.random()*0.5+0.2, s:Math.random()*0.9+0.25, ph:Math.random()*6.28});
+    }
+  }
+  function drawStars(t){
+    cx.clearRect(0,0,cv.width,cv.height);
+    stars.forEach(function(st){
+      var tw = reduced? 1 : (0.65+0.35*Math.sin(t/1000*st.s+st.ph));
+      cx.globalAlpha = st.a*tw;
+      cx.fillStyle = "#D8DEE6";
+      cx.beginPath();
+      cx.arc(st.x*cv.width, st.y*cv.height, st.r*devicePixelRatio, 0, 6.28);
+      cx.fill();
+    });
+    cx.globalAlpha=1;
+    if(!reduced) requestAnimationFrame(drawStars);
+  }
+  addEventListener("resize", function(){ sizeCanvas(); seedStars(); if(reduced) drawStars(0); });
+  sizeCanvas(); seedStars();
+  if(reduced) drawStars(0); else requestAnimationFrame(drawStars);
+})();
+</script>
+</body>
+</html>
