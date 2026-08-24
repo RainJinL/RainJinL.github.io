@@ -86,8 +86,9 @@
     font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;color:var(--faint)}
   footer a{color:var(--dim);text-decoration:none}
   footer a:hover{color:var(--fire)}
-  .motto{margin-left:auto;color:var(--comet)}
+  .motto{margin-left:auto;color:var(--comet);display:flex;align-items:center;gap:.65rem}
   @media (max-width:40em){ .motto{margin-left:0} }
+  #raccoon{image-rendering:pixelated;width:39px;height:36px;flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -212,7 +213,7 @@
   <div class="in">
     <a href="mailto:rainliu@ucsb.edu">EMAIL</a>
     <a href="https://github.com/RainJinL">GITHUB</a>
-    <span class="motto">data doesn't lie; the stars don't disappear; all we need is patience</span>
+    <span class="motto"><canvas id="raccoon" width="13" height="12" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
   </div>
 </footer>
 
@@ -262,6 +263,46 @@
   addEventListener("resize", function(){ sizeCanvas(); seedStars(); if(reduced) drawStars(0); });
   sizeCanvas(); seedStars();
   if(reduced) drawStars(0); else requestAnimationFrame(drawStars);
+
+  /* 像素小浣熊 🦝 */
+  var rc=document.getElementById("raccoon");
+  if(rc){
+    var rx=rc.getContext("2d");
+    var PAL={g:"#9AA3AE", d:"#39424D", k:"#12161B", c:"#EDE7DA"};
+    var SPRITE=[
+      "..gg.....gg..",
+      ".gggg...gggg.",
+      ".gcgg...ggcg.",
+      ".ggggggggggg.",
+      "ggggggggggggg",
+      "gddgggggggddg",
+      "gdEdgggggdEdg",
+      "gddcccccccddg",
+      "gccccckcccccg",
+      ".ccccccccccc.",
+      "..ccccccccc..",
+      "...ccccccc..."
+    ];
+    function drawRaccoon(blink){
+      rx.clearRect(0,0,13,12);
+      for(var y=0;y<SPRITE.length;y++){
+        for(var x=0;x<SPRITE[y].length;x++){
+          var ch=SPRITE[y][x];
+          if(ch===".") continue;
+          if(ch==="E") ch = blink? "d" : "k";
+          rx.fillStyle=PAL[ch];
+          rx.fillRect(x,y,1,1);
+        }
+      }
+    }
+    drawRaccoon(false);
+    if(!reduced){
+      setInterval(function(){
+        drawRaccoon(true);
+        setTimeout(function(){ drawRaccoon(false); }, 160);
+      }, 5200);
+    }
+  }
 })();
 </script>
 </body>
