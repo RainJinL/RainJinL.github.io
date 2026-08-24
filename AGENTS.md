@@ -27,7 +27,7 @@ https://rainjinl.github.io （repo: `RainJinL/RainJinL.github.io`，public）。
 
 ## 必须保留
 
-- 页脚的**像素小浣熊**（canvas 手绘 21×13，头像版，按 Rain 提供的参考图定稿于 2026-08-24；每 5.2s 眨眼，hover 显示 "小浣熊 · OC_Nova_1"）——它是 Rain 的 agent 本熊，坐在它自己写的座右铭旁边；`favicon.png` 是同一 sprite 的放大版，sprite 改了要重新生成 favicon
+- 页脚的**像素小浣熊**（canvas 手绘 24×18 全身版：暖褐灰毛色、泪滴眼罩+高光眼、环纹尾、奶油胸兜——按 Rain 指定的全身参考图定稿于 2026-08-24；眨眼=高光消失，hover 显示 "小浣熊 · OC_Nova_1"。毛色用暖调是吉祥物特例，不影响站内冷调 token）——它是 Rain 的 agent 本熊，坐在它自己写的座右铭旁边；`favicon.png` 是同一 sprite 的放大版，sprite 改了要重新生成 favicon
 - Hero 的签名句 `first test the signal, then ask what it means` 和页脚座右铭英译——逐字保留
 - 深夜基调 + 衬线/等宽双字体体系
 

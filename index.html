@@ -103,7 +103,7 @@
   footer a:hover{color:var(--fire)}
   .motto{margin-left:auto;color:var(--comet);display:flex;align-items:center;gap:.65rem}
   @media (max-width:40em){ .motto{margin-left:0} }
-  #raccoon{image-rendering:pixelated;width:63px;height:39px;flex:0 0 auto}
+  #raccoon{image-rendering:pixelated;width:72px;height:54px;flex:0 0 auto}
 
   /* 打印：白底深字，供教授打印阅读 */
   @media print{
@@ -241,7 +241,7 @@
   <div class="in">
     <a href="mailto:rainliu@ucsb.edu">EMAIL</a>
     <a href="https://github.com/RainJinL">GITHUB</a>
-    <span class="motto"><canvas id="raccoon" width="21" height="13" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
+    <span class="motto"><canvas id="raccoon" width="24" height="18" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
   </div>
 </footer>
 
@@ -254,30 +254,35 @@
   var rc=document.getElementById("raccoon");
   if(rc){
     var rx=rc.getContext("2d");
-    var PAL={g:"#9AA3AE", d:"#343C47", t:"#2D343E", E:"#0A0D11", W:"#F0F4F8",
-             w:"#EDE7DA", n:"#0E1115"};
+    var PAL={g:"#9E948A", d:"#463C34", k:"#181412", W:"#F2F4F6",
+             c:"#EEE7DB", t:"#463C34", n:"#100D0B", b:"#7A553C"};
     var SPRITE=[
-      "...gg...........gg...",
-      "..gddg.........gddg..",
-      "..gddgggggggggggddg..",
-      ".ggggggggggggggggggg.",
-      ".gggggggggtggggggggg.",
-      ".gggwwwwwgtgwwwwwggg.",
-      ".ggddEWddgtgddWEddgg.",
-      "ggdddEEddgtgddEEdddgg",
-      "gddddwwwwgtgwwwwddddg",
-      ".gwwwwwwwgtgwwwwwwwg.",
-      "..gwwwwwwnnnwwwwwwg..",
-      "...gwwwwwwnwwwwwwg...",
-      ".....gwwwwwwwwwg....."
+      "..gg....g....gg........",
+      ".gddg..ggg..gddg.......",
+      ".gdddg.ggg.gdddg.......",
+      "..ggggggggggggg........",
+      ".ggggggggggggggg.......",
+      "gggccccgtgccccggg......",
+      "ggkkkkcgtgckkkkgg......",
+      "gkkWkkcgtgckkWkkg......",
+      "gkkkkkccccckkkkkg......",
+      ".gkkkccnnncckkkg.......",
+      "..gcccccncccccg........",
+      "...gggcccccggg.........",
+      "..ggggcccccgggg.kkcckkcc",
+      ".gggggcccccgggggkkcckkcc",
+      ".gggggcccccgggggkkcckkcc",
+      ".gggggcccccggggg.kkcckk.",
+      "..ggggcccccgggg........",
+      "...bb..ccc..bb........."
     ];
     function drawRaccoon(blink){
-      rx.clearRect(0,0,21,13);
+      rx.clearRect(0,0,24,18);
       for(var y=0;y<SPRITE.length;y++){
         for(var x=0;x<SPRITE[y].length;x++){
           var ch=SPRITE[y][x];
           if(ch===".") continue;
-          if(blink && (ch==="E"||ch==="W")) ch="d";
+          if(blink && ch==="W") ch="k";
           rx.fillStyle=PAL[ch];
           rx.fillRect(x,y,1,1);
         }
