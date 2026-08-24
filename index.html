@@ -103,7 +103,7 @@
   footer a:hover{color:var(--fire)}
   .motto{margin-left:auto;color:var(--comet);display:flex;align-items:center;gap:.65rem}
   @media (max-width:40em){ .motto{margin-left:0} }
-  #raccoon{image-rendering:pixelated;width:72px;height:54px;flex:0 0 auto}
+  #raccoon{image-rendering:pixelated;width:88px;height:68px;flex:0 0 auto}
 
   /* 打印：白底深字，供教授打印阅读 */
   @media print{
@@ -241,7 +241,7 @@
   <div class="in">
     <a href="mailto:rainliu@ucsb.edu">EMAIL</a>
     <a href="https://github.com/RainJinL">GITHUB</a>
-    <span class="motto"><canvas id="raccoon" width="24" height="18" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
+    <span class="motto"><canvas id="raccoon" width="44" height="34" title="小浣熊 · OC_Nova_1"></canvas>data doesn't lie; the stars don't disappear; all we need is patience</span>
   </div>
 </footer>
 
@@ -255,29 +255,45 @@
   if(rc){
     var rx=rc.getContext("2d");
     var PAL={g:"#9E948A", d:"#463C34", k:"#181412", W:"#F2F4F6",
-             c:"#EEE7DB", t:"#463C34", n:"#100D0B", b:"#7A553C"};
+             c:"#EEE7DB", n:"#100D0B", b:"#7A553C"};
     var SPRITE=[
-      "..gg....g....gg........",
-      ".gddg..ggg..gddg.......",
-      ".gdddg.ggg.gdddg.......",
-      "..ggggggggggggg........",
-      ".ggggggggggggggg.......",
-      "gggccccgtgccccggg......",
-      "ggkkkkcgtgckkkkgg......",
-      "gkkWkkcgtgckkWkkg......",
-      "gkkkkkccccckkkkkg......",
-      ".gkkkccnnncckkkg.......",
-      "..gcccccncccccg........",
-      "...gggcccccggg.........",
-      "..ggggcccccgggg.kkcckkcc",
-      ".gggggcccccgggggkkcckkcc",
-      ".gggggcccccgggggkkcckkcc",
-      ".gggggcccccggggg.kkcckk.",
-      "..ggggcccccgggg........",
-      "...bb..ccc..bb........."
+      ".........ggg.............ggg................",
+      ".......ggdddgg.........ggdddgg..............",
+      ".......gdddddg.........gdddddg..............",
+      "......ggdddddgggggggggggdddddgg.............",
+      "......ggddddgggggggggggggddddgg.............",
+      "......ggddgggggggggggggggggddgg.............",
+      ".......ggggggggggggggggggggggg..............",
+      ".......ggggggggggdddgggggggggg..............",
+      ".......gggcccccggdddggcccccggg..............",
+      "......ggcccccccccdddcccccccccgg.............",
+      "......gccccccccccdddccccccccccg.............",
+      ".....ggcccccccckcdddckccccccccgg............",
+      ".....gggccckkkkkkdddkkkkkkcccggg............",
+      "....ggkkkkkkkkkkcdddckkkkkkkkkkgg...........",
+      "...ggkkkkkWWWkkccdddcckkkWWkkkkkgg..........",
+      "..ggkkkkkkWWWkcccnnnccckkWWkkkkkkgg.....cc..",
+      "..gggkkkkkkkkcccnnnnnccckkkkkkkkggg....cccc.",
+      "..gggggkkkkkkccccnnncccckkkkkkggggg...cccccc",
+      "..ggggggkkkkkcccccnccccckkkkkgggggg..kcccccc",
+      "...ggggggggggcccccncccccgggggggggg..kkkcccck",
+      "....gggg.gggggcccccccccggggg.gggg..kkkkkcck.",
+      "........gggggggcccccccggggggg.....ckkkkkkkk.",
+      ".......gggggggggcccccggggggggg...cckkkkkkk..",
+      "......gggggggcgggggggggcgggggggkcccckkkkkc..",
+      "......ggggggcccccccccccccggggggkccccckkkc...",
+      "......ggggggcccccccccccccggggggkcccccccc....",
+      "......ggggggcccccccccccccggggggkcccccccc....",
+      "......ggggggcccccccccccccggggggkkcccccc.....",
+      ".......gggggcccccccccccccgggggkkkkcccc......",
+      "........ggggcccccccccccccggggkkkkkkkk.......",
+      ".........ggggcccccccccccggggcckkkkkk........",
+      "..........gbbbbcccccccbbbbgcccckkkk.........",
+      "..........bbbbbbcccccbbbbbbccccccc..........",
+      "..........bbbbbbcccccbbbbbbkcccc............"
     ];
     function drawRaccoon(blink){
-      rx.clearRect(0,0,24,18);
+      rx.clearRect(0,0,44,34);
       for(var y=0;y<SPRITE.length;y++){
         for(var x=0;x<SPRITE[y].length;x++){
           var ch=SPRITE[y][x];
