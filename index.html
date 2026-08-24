@@ -21,9 +21,7 @@
     font-size:17px; line-height:1.85; min-height:100vh;
   }
   #sky{position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(120% 90% at 50% 115%, rgba(229,138,69,.22), transparent 55%),
-               linear-gradient(#141B24 0%, #10151B 60%)}
-  #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+    background:linear-gradient(#141B24 0%, #10151B 60%)}
 
   nav{position:sticky;top:0;z-index:3;background:rgba(16,21,27,.88);backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line)}
@@ -92,7 +90,7 @@
 </style>
 </head>
 <body>
-<div id="sky"></div><canvas id="stars"></canvas>
+<div id="sky"></div>
 
 <nav aria-label="Site">
   <div class="in">
@@ -220,56 +218,7 @@
 <script>
 (function(){
   "use strict";
-  /* 白羊座 —— 真实坐标（天空视角：北上、东左），四星连线 */
-  var cv=document.getElementById("stars"), cx=cv.getContext("2d");
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function sizeCanvas(){
-    cv.width=innerWidth*devicePixelRatio; cv.height=innerHeight*devicePixelRatio;
-    cv.style.width=innerWidth+"px"; cv.style.height=innerHeight+"px";
-  }
-  var ARIES=[
-    {ra:42.5, dec:27.3, m:1.9, ph:0.0},  /* 41 Arietis */
-    {ra:31.8, dec:23.5, m:3.0, ph:1.6},  /* Hamal α    */
-    {ra:28.7, dec:20.8, m:2.4, ph:3.1},  /* Sheratan β */
-    {ra:28.4, dec:19.3, m:1.7, ph:4.4}   /* Mesarthim γ*/
-  ];
-  var LINKS=[[0,1],[1,2],[2,3]];
-  function project(){
-    var dpr=devicePixelRatio||1;
-    var u=Math.min(innerWidth*0.016,15)*dpr;         /* 比例尺 */
-    var ax=cv.width*0.95-(45-28.4)*u;                /* 靠右，留 5% 边距 */
-    var ay=cv.height*0.14;
-    var k=Math.max(0.8,Math.min(1.4,u/(13*dpr)));
-    return ARIES.map(function(s){
-      return {x:ax+(45-s.ra)*u, y:ay+(29-s.dec)*u, r:s.m*dpr*k};
-    });
-  }
-  function drawSky(t){
-    cx.clearRect(0,0,cv.width,cv.height);
-    var dpr=devicePixelRatio||1;
-    var pts=project();
-    cx.strokeStyle="rgba(130,212,190,0.30)";
-    cx.lineWidth=Math.max(1,dpr*0.8);
-    LINKS.forEach(function(L){
-      cx.beginPath();
-      cx.moveTo(pts[L[0]].x, pts[L[0]].y);
-      cx.lineTo(pts[L[1]].x, pts[L[1]].y);
-      cx.stroke();
-    });
-    pts.forEach(function(p,i){
-      var tw = reduced? 1 : (0.85+0.15*Math.sin(t/1400+ARIES[i].ph));
-      cx.globalAlpha = tw;
-      cx.fillStyle = "#E6ECF4";
-      cx.shadowBlur = (ARIES[i].m>=2.4? 9:5)*dpr; cx.shadowColor = "#E6ECF4";
-      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.28); cx.fill();
-      cx.shadowBlur = 0;
-    });
-    cx.globalAlpha=1;
-    if(!reduced) requestAnimationFrame(drawSky);
-  }
-  addEventListener("resize", function(){ sizeCanvas(); if(reduced) drawSky(0); });
-  sizeCanvas();
-  if(reduced) drawSky(0); else requestAnimationFrame(drawSky);
 
   /* 像素小浣熊 🦝 */
   var rc=document.getElementById("raccoon");
