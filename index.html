@@ -254,28 +254,28 @@
   var rc=document.getElementById("raccoon");
   if(rc){
     var rx=rc.getContext("2d");
-    var PAL={g:"#9E948A", d:"#463C34", k:"#181412", W:"#F2F4F6",
-             c:"#EEE7DB", n:"#100D0B", b:"#7A553C"};
+    var PAL={g:"#9E948A", d:"#463C34", m:"#362C24", k:"#181412", E:"#0A0807",
+             W:"#F2F4F6", c:"#EEE7DB", n:"#100D0B", b:"#7A553C"};
     var SPRITE=[
-      ".........ggg.............ggg................",
-      ".......ggdddgg.........ggdddgg..............",
-      ".......gdddddg.........gdddddg..............",
-      "......ggdddddgggggggggggdddddgg.............",
-      "......ggddddgggggggggggggddddgg.............",
-      "......ggddgggggggggggggggggddgg.............",
-      ".......ggggggggggggggggggggggg..............",
-      ".......ggggggggggdddgggggggggg..............",
-      ".......gggcccccggdddggcccccggg..............",
-      "......ggcccccccccdddcccccccccgg.............",
+      "............................................",
+      "........c..................c................",
+      "........ck................ckc...............",
+      ".......cckk...ggggggggg..ckkc...............",
+      ".......ckkkcgggggggggggggckkkc..............",
+      "......cckkgggggggggggggggggkkc..............",
+      "......ckkgggggggggggggggggggkkc.............",
+      ".....cckgggggggggdddgggggggggkcc............",
+      ".....ckgggcccccggdddggcccccgggkc............",
+      "....c.ggcccccccccdddcccccccccgg.c...........",
       "......gccccccccccdddccccccccccg.............",
-      ".....ggcccccccckcdddckccccccccgg............",
-      ".....gggccckkkkkkdddkkkkkkcccggg............",
-      "....ggkkkkkkkkkkcdddckkkkkkkkkkgg...........",
-      "...ggkkkkkWWWkkccdddcckkkWWkkkkkgg..........",
-      "..ggkkkkkkWWWkcccnnnccckkWWkkkkkkgg.....cc..",
-      "..gggkkkkkkkkcccnnnnnccckkkkkkkkggg....cccc.",
-      "..gggggkkkkkkccccnnncccckkkkkkggggg...cccccc",
-      "..ggggggkkkkkcccccnccccckkkkkgggggg..kcccccc",
+      ".....ggccccccccmcdddcmccccccccgg............",
+      ".....gggcccmmmmmmdddmmmmmmcccggg............",
+      "....ggmmmmEWWmmmcdddcmmWWEmmmmmgg...........",
+      "...ggmmmmEEWWEmccdddccmWWEEmmmmmgg..........",
+      "..ggmmmmmEEEEEcccnnncccEEEEmmmmmmgg.....cc..",
+      "..gggmmmmmEEEcccnnnnncccEEmmmmmmggg....cccc.",
+      "..gggggmmmmmmccccnnnccccmmmmmmggggg...cccccc",
+      "..ggggggmmmmmcccccncccccmmmmmgggggg..kcccccc",
       "...ggggggggggcccccncccccgggggggggg..kkkcccck",
       "....gggg.gggggcccccccccggggg.gggg..kkkkkcck.",
       "........gggggggcccccccggggggg.....ckkkkkkkk.",
@@ -298,7 +298,7 @@
         for(var x=0;x<SPRITE[y].length;x++){
           var ch=SPRITE[y][x];
           if(ch===".") continue;
-          if(blink && ch==="W") ch="k";
+          if(blink && (ch==="W"||ch==="E")) ch="m";
           rx.fillStyle=PAL[ch];
           rx.fillRect(x,y,1,1);
         }
