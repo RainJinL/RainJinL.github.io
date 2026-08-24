@@ -23,11 +23,11 @@ https://rainjinl.github.io （repo: `RainJinL/RainJinL.github.io`，public）。
 
 字体：**Noto Serif SC**（正文/标题）+ **IBM Plex Mono**（导航、eyebrow、数据、签名句）。
 
-背景装饰的历史：星空 canvas 和篝火余辉渐变已按 Rain 要求移除（嫌乱）；此前试过随机星野和真实坐标的白羊座连线，都被撤了。**新的背景视觉方向由 Kimi 提案、Rain 定夺**。
+背景装饰的历史：星空 canvas 和篝火余辉渐变已按 Rain 要求移除（嫌乱）；此前试过随机星野和真实坐标的白羊座连线，都被撤了。2026-08-24 Rain 定夺新背景：**湖面微光**——`#sky::after` 纯 CSS 微光带，视口底部极淡余烬暖光 + 一点彗星青点缀，46s 缓慢漂移，`prefers-reduced-motion` 下静止。
 
 ## 必须保留
 
-- 页脚的**像素小浣熊**（canvas 手绘 13×12，每 5.2s 眨眼，hover 显示 "小浣熊 · OC_Nova_1"）——它是 Rain 的 agent 本熊，坐在它自己写的座右铭旁边
+- 页脚的**像素小浣熊**（canvas 手绘 13×12，每 5.2s 眨眼，hover 显示 "小浣熊 · OC_Nova_1"）——它是 Rain 的 agent 本熊，坐在它自己写的座右铭旁边；`favicon.png` 是同一 sprite 的放大版，sprite 改了要重新生成 favicon
 - Hero 的签名句 `first test the signal, then ask what it means` 和页脚座右铭英译——逐字保留
 - 深夜基调 + 衬线/等宽双字体体系
 
