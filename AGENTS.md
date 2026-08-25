@@ -41,6 +41,10 @@ https://rainjinl.github.io （repo: `RainJinL/RainJinL.github.io`，public）。
 6. 可读性标准：次级文字对比度 ≥ WCAG AAA（现 `#B3BDC9` on `#10151B` ≈ 9:1）——受众有年长教授，**只许更清晰，不许调暗**。
 7. Git 身份：仓库已配置 `user.email = 152076551+RainJinL@users.noreply.github.com`，**不要改**（Rain 的 GitHub 不用学校邮箱，任何真实邮箱都不进提交历史）。
 
+## 统计
+
+页面底部的 GoatCounter 脚本（rainjin.goatcounter.com）是 Rain 的访问统计，**别删**；无 cookie、无需同意横幅。
+
 ## 待办（见 README.md）
 
 - `photos/` 六张占位图等 Rain 挑选（图注已写好，是真实拍摄记录，别改）
