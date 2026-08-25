@@ -21,7 +21,7 @@ https://rainjinl.github.io （repo: `RainJinL/RainJinL.github.io`，public）。
 | `--fire` | `#E58A45` | 唯一强调色（余烬橙） |
 | `--comet` | `#82D4BE` | 点缀（彗星青，克制使用） |
 
-字体：**Noto Serif SC**（正文/标题）+ **IBM Plex Mono**（导航、eyebrow、数据、签名句）。
+字体：**Source Serif 4**（正文/标题，2026-08-24 起）+ **IBM Plex Mono**。Rain 决定站内**可见文本纯英文**，CJK 字体已卸载——新增文案不得出现中文（HTML 注释和本文件除外）。
 
 背景装饰的历史：星空 canvas 和篝火余辉渐变已按 Rain 要求移除（嫌乱）；此前试过随机星野和真实坐标的白羊座连线，都被撤了。2026-08-24 Rain 定夺新背景：**湖面微光**——`#sky::after` 纯 CSS 微光带，视口底部极淡余烬暖光 + 一点彗星青点缀，46s 缓慢漂移，`prefers-reduced-motion` 下静止。
 
@@ -40,6 +40,12 @@ https://rainjinl.github.io （repo: `RainJinL/RainJinL.github.io`，public）。
 5. 《篝火与彗星》文字冒险是 Rain 的私人物品，**永远不上站**。
 6. 可读性标准：次级文字对比度 ≥ WCAG AAA（现 `#B3BDC9` on `#10151B` ≈ 9:1）——受众有年长教授，**只许更清晰，不许调暗**。
 7. Git 身份：仓库已配置 `user.email = 152076551+RainJinL@users.noreply.github.com`，**不要改**（Rain 的 GitHub 不用学校邮箱，任何真实邮箱都不进提交历史）。
+
+## 站点文件
+
+- `og-banner.png`：链接预览卡配图（占位版，照片到位后可换）；`404.html`：GitHub Pages 自动使用
+- 页脚 "CV · SOON" 是占位，等 Rain 定稿 PDF 后换成链接
+- 页脚 fineprint 的 "Updated" 日期：内容有实质更新时顺手改
 
 ## 统计
 

@@ -6,9 +6,26 @@
 <title>Rain Liu</title>
 <meta name="description" content="Rain Liu — astrophysics & data science at UC Santa Barbara. Light curves, night skies, and things I build.">
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://rainjinl.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rain Liu">
+<meta property="og:description" content="Astrophysics & data science at UC Santa Barbara. Light curves, night skies, and things I build.">
+<meta property="og:url" content="https://rainjinl.github.io/">
+<meta property="og:image" content="https://rainjinl.github.io/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Rain Liu",
+ "alternateName":["Yushu Liu"],"url":"https://rainjinl.github.io/",
+ "image":"https://rainjinl.github.io/og-banner.png",
+ "sameAs":["https://github.com/RainJinL"],
+ "affiliation":{"@type":"CollegeOrUniversity","name":"University of California, Santa Barbara"},
+ "description":"Astrophysics and Statistics & Data Science undergraduate: exoplanet light curves, GRB afterglow model benchmarking, astrophotography."}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
   :root{
     --bg:#10151B; --bg2:#0C1015; --panel:#161D25; --line:#242D37;
@@ -20,7 +37,7 @@
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
   body{
     background:var(--bg); color:var(--ink);
-    font-family:"Noto Serif SC","Songti SC",Georgia,serif;
+    font-family:"Source Serif 4",Georgia,serif;
     font-size:17px; line-height:1.85; min-height:100vh;
   }
   #sky{position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -40,6 +57,10 @@
   }
   @media (prefers-reduced-motion: reduce){ #sky::after{animation:none} }
 
+  .skip{position:fixed;top:-3.2rem;left:1rem;z-index:10;background:var(--fire);color:var(--bg);
+    padding:.5rem .9rem;border-radius:6px;font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+    text-decoration:none;transition:top .15s}
+  .skip:focus{top:.6rem}
   nav{position:sticky;top:0;z-index:3;background:rgba(16,21,27,.88);backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line)}
   nav .in{max-width:60em;margin:0 auto;padding:.8rem 1.4rem;display:flex;gap:1.6rem;align-items:baseline;flex-wrap:wrap}
@@ -105,6 +126,8 @@
   .motto .mline{letter-spacing:.05em}
   @media (min-width:52em){ .motto .mline{white-space:nowrap} }
   @media (max-width:40em){ .motto{margin-left:0} }
+  .cv-soon{color:var(--faint)}
+  .fineprint{padding-top:0;font-size:.62rem;color:var(--faint)}
   #raccoon{image-rendering:pixelated;width:88px;height:68px;flex:0 0 auto}
 
   /* 打印：白底深字，供教授打印阅读 */
@@ -122,6 +145,7 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="sky"></div>
 
 <nav aria-label="Site">
@@ -134,7 +158,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main">
   <section id="hero">
     <span class="eyebrow">Santa Barbara, California</span>
     <h1>I pull signals out of noisy skies —<br>and cook for <em>every kind of mind</em> at my table.</h1>
@@ -187,7 +211,7 @@
          不想展示的直接删掉整块；本区末尾有两张被注释掉的备用卡片，取消注释即可上架。 -->
     <div class="cards">
       <div class="card">
-        <span class="t">Eternal Night (永夜生存)</span>
+        <span class="t">Eternal Night</span>
         <span class="d">A roguelite tower-defense web game: sixteen talents that change how a run
         is played, push-your-luck scavenging, and a reincarnation narrative.</span>
         <span class="m">GAME DESIGN · WEB</span>
@@ -243,8 +267,10 @@
   <div class="in">
     <a href="mailto:rainliu@ucsb.edu">EMAIL</a>
     <a href="https://github.com/RainJinL">GITHUB</a>
-    <span class="motto"><canvas id="raccoon" width="44" height="34" title="小浣熊 · OC_Nova_1"></canvas><span class="mline">data doesn't lie; the stars don't disappear; all we need is patience</span></span>
+    <span class="cv-soon" title="PDF coming soon">CV · SOON</span>
+    <span class="motto"><canvas id="raccoon" width="44" height="34" role="img" aria-label="Pixel raccoon mascot" title="Little Raccoon - OC_Nova_1"></canvas><span class="mline">data doesn't lie; the stars don't disappear; all we need is patience</span></span>
   </div>
+  <div class="in fineprint">&copy; 2026 Rain (Yushu) Liu &middot; Updated Aug 2026</div>
 </footer>
 
 <script>
