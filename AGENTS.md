@@ -41,6 +41,13 @@ https://rainjinl.github.io （repo: `RainJinL/RainJinL.github.io`，public）。
 6. 可读性标准：次级文字对比度 ≥ WCAG AAA（现 `#B3BDC9` on `#10151B` ≈ 9:1）——受众有年长教授，**只许更清晰，不许调暗**。
 7. Git 身份：仓库已配置 `user.email = 152076551+RainJinL@users.noreply.github.com`，**不要改**（Rain 的 GitHub 不用学校邮箱，任何真实邮箱都不进提交历史）。
 
+## 当前状态：站点已下线保留（2026-08-26）
+
+Rain 决定在完善前**只公开姓名**：`index.html` 已换成极简占位页（仅 Yushu Liu + noindex）。
+完整版存在仓库目录下的 `index.full.html`，已写进 `.gitignore`，**不得提交、不得发布**。
+`og-banner.png` 已从仓库删除（本地留存为 `og-banner.full.png`）。
+**未经 Rain 明确说「上线」，不要还原任何内容。**
+
 ## 命名
 
 站内主名为 **Yushu Liu**（Rain 作为别名保留，JSON-LD alternateName）——Rain 2026-08-24 拍板，新增文案照此执行。
